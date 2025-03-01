@@ -1,0 +1,155 @@
+<!-- Apartat de Contecte. Aquesta secció permet als visitants de la pàgina web 
+posar-se en contacte amb els investigadors o responsables del projecte. Això 
+facilita la comunicació directa amb l'equip responsable i proporciona una via per 
+a preguntes o col·laboracions futures. -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contacte</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="fotos/icona_inici.png">
+  <!-- Estils css -->
+  <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+  <link rel="stylesheet" type="text/css" href="css/footer.css"/>
+  <link rel="stylesheet" type="text/css" href="css/contact.css"/>
+  <link rel="stylesheet" type="text/css" href="css/cookies.css"/>
+  <!-- Estils js -->
+  <script src="js/menu.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/cookies.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+</head>
+<body onload="loadDarkMode()"> <!-- Carrega el mode fosc quan la pàgina es carrega -->
+  <!-- Barra de navegació superior -->
+  <div class="topnav" id="Controlbarra">
+    <!-- Links -->
+    <!--a href="index.html" class="active logo"></a-->
+    <a href="index.html" class="actual">Inici</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="carta.html">Carta</a>
+    <a href="ComArribar.html">Com Arribar</a>
+    <a href="reserves.html">Reserves</a>
+    <!-- Icona per activar/desactivar el mode fosc -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .reserva-container {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reserva-container">
+        <h2>Reserva tu Mesa</h2>
+        <label>Nombre:</label>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+
+        <label>Fecha de la reserva:</label>
+        <input type="text" id="fechaReserva" placeholder="Selecciona una fecha">
+
+        <label>Hora:</label>
+        <select id="horaReserva">
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+        </select>
+
+        <label>Número de personas:</label>
+        <input type="number" id="personas" min="1" max="10" placeholder="Cantidad de personas">
+
+        <button onclick="reservar()">Reservar</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Inicializar Flatpickr en el campo de fecha
+        flatpickr("#fechaReserva", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        function reservar() {
+            let nombre = document.getElementById("nombre").value;
+            let fecha = document.getElementById("fechaReserva").value;
+            let hora = document.getElementById("horaReserva").value;
+            let personas = document.getElementById("personas").value;
+
+            if (nombre && fecha && hora && personas) {
+                alert(`Reserva confirmada para ${nombre} el ${fecha} a las ${hora} para ${personas} personas.`);
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        }
+    </script>
+  <!--Peu de pàgina-->
+  <footer class="footer">
+    <div class="group-1">
+      <div class="angle-box">
+        <figure>
+          <a href="#">
+            <img src="fotos/logo_URV.png" alt="Logo URV">
+          </a>
+        </figure>
+      </div>
+      <div class="angle-box">
+        <h2>NOSALTRES</h2>
+        <p>Empresa compromesa amb la qualitat i la innovació</p>
+        <p>Tel. 977 777 666</p> 
+      </div>
+      <div class="angle-box">
+        <h2>SEGUEIX-NOS</h2>
+        <div class="social-angle">
+          <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+          <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+          <a href="https://twitter.com/" class="fa fa-twitter"></a>
+          <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+        </div>
+      </div>
+    </div>
+    <div class="group-2">
+      <small>&copy; 2024 <b>Oriol Boronat Fernàndez</b> - <a href="drets.html" class="drets">Tots els Drets Reservats</a>.</small> 
+    </div>
+  </footer>
+  <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="arrow up"></i></button> <!-- Botó de retonr a dalt -->
+  <!-- Missatge cookies -->
+  <div id="cookie-message">
+    Aquest lloc web utilitza cookies per millorar l'experiència de l'usuari. En continuar utilitzant 
+    aquest lloc, acceptes el nostre ús de <a href="pol_cookies.html">cookies</a>.
+    <button id="accept-cookie">Acceptar</button>
+    <button id="denegar-cookie">Denegar</button>
+  </div>
+</body>
+</html>
